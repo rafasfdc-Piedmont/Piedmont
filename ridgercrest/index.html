@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RidgerCrest Build</title>
+  <meta name="description" content="RidgerCrest Build photo album." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="carousel.css" />
+</head>
+<body>
+  <header class="hero album-hero">
+    <nav class="nav">
+      <a href="../index.html" class="logo">Piedmont Digital Architecture LLC</a>
+      <a href="../index.html" class="back-link">Back to home</a>
+    </nav>
+    <div class="hero-content">
+      <p class="eyebrow">Photo album</p>
+      <h1>RidgerCrest Build</h1>
+      <p>A chronological look at the build, arranged by image number.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section album-section" aria-labelledby="album-heading">
+      <h2 id="album-heading">Build progress</h2>
+      <div class="carousel" aria-roledescription="carousel" aria-label="RidgerCrest Build photos">
+        <div class="carousel-stage">
+          <button class="carousel-control carousel-control-prev" type="button" aria-label="Previous photo">
+            <span aria-hidden="true">&#8592;</span>
+          </button>
+          <figure class="slide" aria-live="polite">
+            <img src="images/1-Nacelles_base.JPG" alt="RidgerCrest Build photo 1" />
+            <figcaption></figcaption>
+          </figure>
+          <button class="carousel-control carousel-control-next" type="button" aria-label="Next photo">
+            <span aria-hidden="true">&#8594;</span>
+          </button>
+        </div>
+        <div class="carousel-meta">
+          <span class="carousel-counter" aria-live="polite">1 / 4</span>
+          <div class="carousel-dots" role="tablist" aria-label="Choose a photo"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Piedmont Digital. All rights reserved.</p>
+  </footer>
+
+  <script src="carousel.js"></script>
+</body>
+</html>
