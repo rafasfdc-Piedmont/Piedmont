@@ -1,0 +1,37 @@
+1: Install Git extensions
+2: Open VScode, Code folder and type in new Terminal:
+    git remote -v
+2.1 Bad Origin exists? (EG Cloudflare old worker) Remove the remote:  
+    git remote remove [offending origin, like rafasfdc-Piedmont]
+2.2 Set your email
+        git config --global user.email "rafasfdc@gmail.com"
+2.3 Set your user
+         git config --global user.name "rafasfdc@gmail.com"  
+2.4 Set the new remote:
+(grab the exact URL from the green "Code" button on your GitHub repo page). 
+Now you can push to either remote by name: `git push origin` or `git push github`.
+    git remote set-url origin https://github.com/yourusername/piedmont-digital-site.git
+                              https://github.com/rafasfdc-Piedmont/Piedmont
+                              or SSH : git@github.com:rafasfdc-Piedmont/Piedmont.git
+3.  Now you can push to either remote by name: `git push origin` or `git push github`.
+PUSH and set up tracking:
+    git push -u origin main
+3.1 You are redirected to something like :
+https://github.com/login/oauth/authorize?response_type=code&client_id=0120e057bd645470c1ed&state=1206e84f9bb04cfa90379a1713a6afef&code_challenge_method=S256&code_challenge=UrqlwnjcHPqlGAwAgpE56h4FnY5ukR6h5zeHRTBlNk4&redirect_uri=http%3a%2f%2f127.0.0.1%3a64993%2f&scope=repo+gist+workflow
+Authorize It 
+If this is a brand-new empty GitHub repo, that push will succeed right away and create main on GitHub. If the GitHub repo already has commits (e.g. you initialized it with a README), you'll want to pull first to avoid conflicts:
+3.2 PULL 
+git pull origin main --allow-unrelated-histories
+
+4 Cloudflare
+4.1. Connect the repo to your Worker in Cloudflare
+    Go to Workers & Pages
+    Click crimson-grass-8dfd
+    Go to Settings → Builds
+4.2    Click Connect and follow the prompts to link your GitHub/GitLab account and select the repository
+        In Builds -- Git repository: 
+            Click the Github Button
+4.3 Install & Authorize Cloudflare Workers and Pages
+
+Configure build settings (for a static site with no build step, the deploy command is just npx wrangler deploy)
+Save and Deploy
