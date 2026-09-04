@@ -3,43 +3,289 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallows — Coming Soon</title>
+    <title>Gigantic Ghoulish Gallows Gallery</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+
         }
         body {
-            background-color: #000000;
-            color: #FF8C00;
+            background: #000000;
+            color: #f3f3f3;
             font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
             text-align: center;
         }
+
         .container {
-            padding: 2rem;
+            margin: 0 auto;
+            max-width: 1100px;
+            padding: 48px 16px 64px;
+            width: 100%;
         }
+
         h1 {
-            font-size: 3rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
+            color: #ff8c00;
+            font-family: Chiller, 'Old English Text MT', fantasy;
+            font-size: clamp(2.8rem, 7vw, 5.8rem);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 42px;
+            text-shadow: 0 0 18px rgba(255, 140, 0, 0.3);
         }
-        p {
-            font-size: 1.5rem;
-            letter-spacing: 0.1em;
+
+        .folder-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 50px;
+            margin: 0 auto 54px;
+            max-width: 780px;
+        }
+
+        .folder-button {
+            align-items: center;
+            background: transparent;
+            border: 0;
+            color: #f3f3f3;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            font: 500 1.15rem/1.2 'Courier New', Courier, monospace;
+            gap: 12px;
+            min-width: 0;
+            padding: 4px;
+            transition: color 180ms ease, transform 180ms ease;
+        }
+
+        .folder-button:hover,
+        .folder-button:focus-visible,
+        .folder-button.active {
+            color: #ff9d2e;
+            transform: translateY(-4px);
+        }
+
+        .folder-button:focus-visible {
+            outline: 2px solid #ff8c00;
+            outline-offset: 6px;
+        }
+
+        .folder-button[disabled] {
+            color: #5d5d5d;
+            cursor: not-allowed;
+            opacity: 0.65;
+        }
+
+        .folder-button[disabled]:hover {
+            transform: none;
+        }
+
+        .folder-icon {
+            background: #ff8c00;
+            border-radius: 3px 5px 5px 5px;
+            display: block;
+            height: 64px;
+            position: relative;
+            width: 82px;
+        }
+
+        .folder-icon::before {
+            background: #ff8c00;
+            border-radius: 4px 4px 0 0;
+            content: '';
+            height: 10px;
+            left: 7px;
+            position: absolute;
+            top: -7px;
+            width: 31px;
+        }
+
+        .folder-icon::after {
+            border: 2px solid rgba(0, 0, 0, 0.22);
+            border-radius: 3px;
+            content: '';
+            inset: 7px;
+            position: absolute;
+        }
+
+        .folder-button[disabled] .folder-icon,
+        .folder-button[disabled] .folder-icon::before {
+            background: #4b4b4b;
+        }
+
+        .carousel {
+            border-top: 1px solid #343434;
+            margin: 0 auto;
+            max-width: 900px;
+            padding-top: 30px;
+        }
+
+        .carousel-stage {
+            align-items: center;
+            background: #111;
+            display: flex;
+            height: min(62vw, 520px);
+            justify-content: center;
+            min-height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-image {
+            height: 100%;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        .carousel-message {
+            color: #999;
+            font-size: 1rem;
+            padding: 24px;
+        }
+
+        .carousel-control {
+            background: rgba(0, 0, 0, 0.72);
+            border: 1px solid #ff8c00;
+            border-radius: 50%;
+            color: #ff8c00;
+            cursor: pointer;
+            font: 700 1.5rem/1 'Courier New', Courier, monospace;
+            height: 46px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+        }
+
+        .carousel-control:hover,
+        .carousel-control:focus-visible {
+            background: #ff8c00;
+            color: #050505;
+        }
+
+        .carousel-control:disabled {
+            cursor: not-allowed;
+            opacity: 0.35;
+        }
+
+        .previous { left: 16px; }
+        .next { right: 16px; }
+
+        .filename {
+            color: #fff;
+            font: 500 1rem/1.4 'Courier New', Courier, monospace;
+            min-height: 1.4em;
+            padding: 14px 8px 0;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding-top: 32px; }
+            h1 { margin-bottom: 34px; }
+            .folder-grid { gap: 34px 14px; }
+            .folder-icon { height: 50px; width: 66px; }
+            .folder-button { font-size: 0.9rem; }
+            .carousel-stage { height: 70vw; min-height: 220px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Gallows</h1>
-        <p>Coming Soon</p>
+        <h1>Gigantic Ghoulish Gallows Gallery</h1>
+
+        <main>
+            <section class="folder-grid" aria-label="Gallery folders">
+                <button class="folder-button" type="button" data-year="2020"><span class="folder-icon" aria-hidden="true"></span><span>2020</span></button>
+                <button class="folder-button" type="button" data-year="2021"><span class="folder-icon" aria-hidden="true"></span><span>2021</span></button>
+                <button class="folder-button" type="button" data-year="2022"><span class="folder-icon" aria-hidden="true"></span><span>2022</span></button>
+                <button class="folder-button" type="button" data-year="2023"><span class="folder-icon" aria-hidden="true"></span><span>2023</span></button>
+                <button class="folder-button" type="button" data-year="2024"><span class="folder-icon" aria-hidden="true"></span><span>2024</span></button>
+                <button class="folder-button" type="button" data-year="2025"><span class="folder-icon" aria-hidden="true"></span><span>2025</span></button>
+                <button class="folder-button" type="button" data-year="2026"><span class="folder-icon" aria-hidden="true"></span><span>2026</span></button>
+                <button class="folder-button" type="button" data-year="2027" disabled aria-label="2027 folder unavailable"><span class="folder-icon" aria-hidden="true"></span><span>2027</span></button>
+                <button class="folder-button" type="button" data-year="2028" disabled aria-label="2028 folder unavailable"><span class="folder-icon" aria-hidden="true"></span><span>2028</span></button>
+            </section>
+
+            <section class="carousel" aria-label="Gallery carousel">
+                <div class="carousel-stage">
+                    <p class="carousel-message" id="carousel-message">Choose a folder to open its gallery.</p>
+                    <img class="carousel-image" id="carousel-image" alt="" hidden>
+                    <button class="carousel-control previous" id="previous" type="button" aria-label="Previous image" hidden>&lt;</button>
+                    <button class="carousel-control next" id="next" type="button" aria-label="Next image" hidden>&gt;</button>
+                </div>
+                <p class="filename" id="filename" aria-live="polite"></p>
+            </section>
+        </main>
     </div>
+    <script>
+        const galleryImages = {
+            '2020': ['1-Year1.JPG', '2-Cemetery.JPG', '3-SIDEVIEW.JPG', '4-SmokingDragon.JPG', '5-SmokinDragon2.JPG', '6-RidgeRd.JPG'],
+            '2021': [],
+            '2022': ['1-KaratheWatchdog.JPG', '10-SolarTitans2.JPG', '11-SolarTitans.JPG', '2-AndThenThereWereFour.JPG', '3-Sirenhead&CompanyPatio.jpg', '4-Skelly.jpg', '5-Sirenhead.jpg', '6-AnotefromaFan.jpg', '7-ASideView.JPG', '8-ABackView.JPG', '9-DragonSurvives.JPG'],
+            '2023': [],
+            '2024': [],
+            '2025': ['1-SirenHead.jpg', '10-Spider.JPG', '11-HalloweenNight.JPG', '15-ChristmasSkelien.jpg', '2-Skelien2.jpg', '3-SkelienFace.jpg', '4-MonsterLineupDay.jpg', '5-Monster LineupNite.jpg', '6-TheBand.JPG', '7-TreeDemon.JPG', '8-20ftCat.JPG', '9-Aliens.JPG'],
+            '2026': [],
+            '2027': [],
+            '2028': []
+        };
+
+        const buttons = document.querySelectorAll('.folder-button:not([disabled])');
+        const image = document.querySelector('#carousel-image');
+        const message = document.querySelector('#carousel-message');
+        const filename = document.querySelector('#filename');
+        const previous = document.querySelector('#previous');
+        const next = document.querySelector('#next');
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function showImage() {
+            const currentFile = currentImages[currentIndex];
+            image.src = `images/${document.querySelector('.folder-button.active').dataset.year}/${encodeURIComponent(currentFile)}`;
+            image.alt = currentFile;
+            filename.textContent = currentFile;
+            previous.disabled = currentIndex === 0;
+            next.disabled = currentIndex === currentImages.length - 1;
+        }
+
+        function openFolder(button) {
+            buttons.forEach(folder => folder.classList.remove('active'));
+            button.classList.add('active');
+            currentImages = galleryImages[button.dataset.year];
+            currentIndex = 0;
+
+            if (currentImages.length === 0) {
+                image.hidden = true;
+                previous.hidden = true;
+                next.hidden = true;
+                filename.textContent = '';
+                message.hidden = false;
+                message.textContent = `The ${button.dataset.year} folder has no images yet.`;
+                return;
+            }
+
+            message.hidden = true;
+            image.hidden = false;
+            previous.hidden = false;
+            next.hidden = false;
+            showImage();
+        }
+
+        buttons.forEach(button => button.addEventListener('click', () => openFolder(button)));
+        previous.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex -= 1;
+                showImage();
+            }
+        });
+        next.addEventListener('click', () => {
+            if (currentIndex < currentImages.length - 1) {
+                currentIndex += 1;
+                showImage();
+            }
+        });
+    </script>
+</body>
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a357f8f32a6514c5',t:'MTc4ODQ3MjI1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
