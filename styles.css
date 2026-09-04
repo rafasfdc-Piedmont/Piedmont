@@ -71,6 +71,7 @@ a { color: var(--accent); text-decoration: none; }
 .section-alt { background: var(--surface); max-width: none; }
 .section h2 { font-size: 2rem; margin-bottom: 1.5rem; }
 .section p { color: var(--muted); max-width: 600px; margin: 0 auto 1.5rem; }
+.site-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
 
 /* Cards */
 .cards {
