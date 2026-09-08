@@ -1,8 +1,8 @@
 const images = [
-  '3-Nacellesfoambulked.jpg',
-  '2-Nacelles_rotor.JPG',
-  '10-TheToiletposter.jpg',
-  '1-Nacelles_base.JPG'
+  '3-Nacellesfoambulked_compressed.jpg',
+  '2-Nacelles_rotor_compressed.JPG',
+  '10-TheToiletposter_compressed.jpg',
+  '1-Nacelles_base_compressed.JPG'
 ]
   .map(filename => ({
     filename,
